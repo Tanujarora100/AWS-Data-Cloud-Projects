@@ -1,18 +1,6 @@
-resource "aws_s3_bucket_lifecycle_configuration" "ingestion-bucket-lifecycle-glacier" {
-  bucket = aws_s3_bucket.ingestion-bucket.id
 
-  rule {
-    id     = "ArchiveAfter90Days"
-    status = "Enabled"
-
-    transition {
-      days          = 90
-      storage_class = "GLACIER"
-    }
-  }
-}
 resource "aws_s3_bucket_lifecycle_configuration" "ingestion-bucket-lifecycle-cleanup" {
-  bucket = aws_s3_bucket.ingestion-bucket.id
+  bucket = aws_s3_bucket.ingestion_bucket.id
 
   rule {
     id     = "DeleteAfter365Days"
@@ -28,7 +16,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "ingestion-bucket-lifecycle-cle
     status = "Enabled"
 
     noncurrent_version_expiration {
-      noncurrent_days = 0
+      noncurrent_days = 1
     }
   }
 }
