@@ -1,10 +1,9 @@
 terraform {
   backend "s3" {
     bucket         = "terraform-state-bucket-data-ingestion"
-    key            = "dev/terraform.tfstate"
+    key            = "Project/terraform.tfstate"
     region         = "us-east-1"
-    profile        = "default"
     encrypt        = true
-    dynamodb_table = "terraform-state-lock-table"
+    dynamodb_table = "data-ingestion-state-lock"
   }
 }
