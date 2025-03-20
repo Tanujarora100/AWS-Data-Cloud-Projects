@@ -1,7 +1,7 @@
 locals {
   workspaces = {
     dev = {
-      bucket_name = "data-ingestion"
+      bucket_name = "data-ingestion-bucket-${var.workspace.environment}"
       region      = "ap-south-1"
       environment = "dev"
     }
