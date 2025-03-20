@@ -1,0 +1,45 @@
+name: Infrastructure CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Infrastructure/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'Infrastructure/**'
+  workflow_dispatch:
+
+jobs:
+  infrastructure:
+    name: Infrastructure Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Initialize Terraform
+        run: terraform init
+        working-directory: ./Infrastructure
+
+      - name: Validate Terraform
+        run: terraform validate
+        working-directory: ./Infrastructure
+
+      - name: Plan Terraform
+        run: terraform plan
+        working-directory: ./Infrastructure
+        
+      - name: Apply Terraform (only on push to main)
+        if: github.event_name == 'push'
+        run: terraform apply -auto-approve
+        working-directory: ./Infrastructure
