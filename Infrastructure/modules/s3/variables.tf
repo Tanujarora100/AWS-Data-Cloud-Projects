@@ -25,6 +25,6 @@ provider "aws" {
 }
 
 variable "force_destroy" {
-  default = false
+  default     = false
   description = "Value to enable force destroy of the bucket"
 }

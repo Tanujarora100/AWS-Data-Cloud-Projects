@@ -26,7 +26,7 @@ resource "aws_iam_role" "github_oidc_role" {
             "${aws_iam_openid_connect_provider.github.url}:sub" = "repo:Tanujarora100/AWS-BatchData-Pipeline"
           }
         }
-        
+
       }
     ]
   })

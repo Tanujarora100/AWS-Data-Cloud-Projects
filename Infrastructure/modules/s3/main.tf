@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "ingestion_bucket" {
-  bucket = local.workspace[var.workspace_key].bucket_name
+  bucket        = local.workspace[var.workspace_key].bucket_name
   force_destroy = true
 }
 resource "aws_s3_bucket_public_access_block" "ingestion-bucket-public-access-block" {
