@@ -14,7 +14,7 @@ resource "aws_s3_bucket_versioning" "state-bucket-versioning" {
     status = "Enabled"
   }
 }
-resource "aws_s3_bucket_object" "state-folder"{
+resource "aws_s3_object" "state-folder"{
     bucket = aws_s3_bucket.state-bucket.id
     key = "Project/"
 }
