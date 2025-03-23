@@ -18,7 +18,7 @@ In today's digital landscape, capturing and analyzing user behavior in real-time
 ## 🏗️ Architecture Diagram
 
 ```text
-[Clickstream Data Generator (Python Script)]
+[Clickstream Data Pull From BinanceAPI (Python Script)]
                   ⬇️
          [Kinesis Data Streams]
                   ⬇️
