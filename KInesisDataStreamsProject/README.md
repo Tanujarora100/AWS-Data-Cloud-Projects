@@ -91,29 +91,6 @@ clickstream-data/
 
 ---
 
-## 📊 Sample KPIs (Gold Layer)
-
-- 🔝 Top 10 visited pages
-- ⏱️ Avg. session duration
-- 📈 Page view trends over time
-- 👤 Clicks per user
-- 📉 Bounce rate analysis
-
----
-
-## 🔢 Sample Click Event Payload
-
-```json
-{
-  "user_id": "U12345",
-  "timestamp": "2025-03-23T12:23:34Z",
-  "session_id": "S98765",
-  "page": "/home",
-  "event_type": "click",
-  "browser": "Chrome"
-}
-```
-
 ---
 
 ## 📂 Repository Structure
