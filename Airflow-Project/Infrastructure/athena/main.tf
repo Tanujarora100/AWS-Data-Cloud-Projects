@@ -4,6 +4,10 @@ resource "aws_athena_database" "athena-airflow-database" {
   bucket = var.source_bucket
 }
 
+
+
+
+
 resource "aws_athena_workgroup" "airflow-workgroup" {
   count = var.enable_workgroup_configuration ? 1 : 0
   name  = var.workgroup_name
