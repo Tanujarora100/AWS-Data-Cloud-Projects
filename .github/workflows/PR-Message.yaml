@@ -18,7 +18,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
-👋 Hey @${{ github.actor }}! Thanks for opening this PR 🎉
+👋 Hey @${context.actor}! Thanks for opening this PR 🎉
 
 ✅ Please ensure:
 - [ ] Code is properly linted
