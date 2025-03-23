@@ -1,13 +1,10 @@
 name: PR Welcome Message
-
 on:
   pull_request:
     types: [opened]
-
 jobs:
   comment-on-pr:
     runs-on: ubuntu-latest
-
     steps:
       - name: Comment on new PR
         uses: actions/github-script@v7
@@ -18,17 +15,16 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
-👋 Hey @${context.actor}! Thanks for opening this PR 🎉
-
-✅ Please ensure:
-- [ ] Code is properly linted
-- [ ] All tests have been written or updated
-- [ ] Documentation (if required) is added
-- [ ] The title follows Conventional Commits
-- [ ] Make sure to **rebase** if you have multiple commits
-- [ ] If this is a **Terraform-related PR**, make sure it is properly formatted using:
-  \`terraform fmt -recursive\`
-
-Happy Merging! 🚀
+                👋 Hey @${{ github.actor }}! Thanks for opening this PR 🎉✅ 
+                
+                Please ensure:
+                - [ ] Code is properly linted
+                - [ ] All tests have been written or updated
+                - [ ] Documentation (if required) is added
+                - [ ] The title follows Conventional Commits
+                - [ ] Make sure to **rebase** if you have multiple commits
+                - [ ] If this is a **Terraform-related PR**, make sure it is properly formatted using: \`terraform fmt -recursive\`
+                
+                Happy Merging! 🚀
               `
             })
