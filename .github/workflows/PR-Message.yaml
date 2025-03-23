@@ -17,9 +17,9 @@ jobs:
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-body: |
-  👋 Hey @${{ github.actor }}! Thanks for opening this PR 🎉
 
+body: 
+  👋 Hey @${{ github.actor }}! Thanks for opening this PR 🎉
 ✅ Please ensure:
 - [ ] Code is properly linted
 - [ ] All tests have been written or updated
