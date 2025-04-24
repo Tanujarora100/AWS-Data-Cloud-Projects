@@ -1,0 +1,5 @@
+[
+  { "account_id": "111111111111", "env": "non-prod" },
+  { "account_id": "222222222222", "env": "prod" },
+  { "account_id": "333333333333", "env": "non-prod" }
+]
