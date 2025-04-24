@@ -1,4 +1,17 @@
 name: finops-pipeline
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - non-prod
+          - prod
+      
 jobs:
   generate-matrix:
     runs-on: ubuntu-latest
