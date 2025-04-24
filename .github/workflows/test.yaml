@@ -1,0 +1,38 @@
+name: finops-pipeline
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Filter accounts based on input env
+        id: set-matrix
+        run: |
+          INPUT_ENV="${{ github.event.inputs.env }}"
+
+          if [ "$INPUT_ENV" = "all" ]; then
+            FILTER='.'
+          else
+            FILTER="[.[] | select(.env == \"$INPUT_ENV\")]"
+          fi
+
+          MATRIX=$(jq -c "$FILTER" accounts.json)
+          echo "matrix=$MATRIX"
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+  deploy:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    steps:
+      - name: Deploy to ${{ matrix.account_id }} in ${{ matrix.env }}
+        run: |
+          echo "Deploying to Account: ${{ matrix.account_id }} | Env: ${{ matrix.env }}"
