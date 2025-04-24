@@ -40,7 +40,7 @@ jobs:
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
       - name: Print final matrix
         run: |
-          echo "📦 Final matrix being passed to deploy job:"
+          echo "Final matrix being passed to deploy job:"
           echo '${{ steps.set-matrix.outputs.matrix }}' | jq
 
 
@@ -50,7 +50,11 @@ jobs:
     strategy:
       matrix:
         include: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    env: 
+      AWS_REGION: us-east-1
+      ACCOUNT_ID: ${{ matrix.account_id }}
+      ENVIRONMENT: ${{ matrix.env }}
     steps:
-      - name: Deploy to ${{ matrix.account_id }} in ${{ matrix.env }}
+      - name: Deploy to ${{ env.ACCOUNT_ID }} in ${{ env.ENVIRONMENT }}
         run: |
-          echo "Deploying to Account: ${{ matrix.account_id }} | Env: ${{ matrix.env }}"
+          echo "Deploying to Account: ${{ env.ACCOUNT_ID }} | Env: ${{ env.ENVIRONMENT }}"
