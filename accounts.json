@@ -1,7 +1,7 @@
 [
     { "account_id": "111111111111", "env": "non-prod" },
     { "account_id": "222222222222", "env": "prod" },
-    { "account_id": "333333333333", "env": "non-prod" }
+    { "account_id": "333333333333", "env": "non-prod" },
     { "account_id": "444444444444", "env": "prod" },
     { "account_id": "555555555555", "env": "non-prod" },
     { "account_id": "666666666666", "env": "prod" },
