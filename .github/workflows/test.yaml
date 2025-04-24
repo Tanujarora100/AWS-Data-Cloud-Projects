@@ -38,6 +38,11 @@ jobs:
           MATRIX=$(jq -c "$FILTER" accounts.json)
           echo "matrix=$MATRIX"
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+      - name: Print final matrix
+        run: |
+          echo "📦 Final matrix being passed to deploy job:"
+          echo '${{ steps.set-matrix.outputs.matrix }}' | jq
+
 
   deploy:
     needs: generate-matrix
